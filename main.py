@@ -1,4 +1,8 @@
-# pip install streamlit streamlit-lottie Pillow openpyxl
+!pip install streamlit -q
+!pip install streamlit-lottie
+!pip install pandas
+!pip install openpyxl
+
 import streamlit as st
 import pandas as pd
 import openpyxl as xl
