@@ -1,7 +1,4 @@
-!pip install streamlit -q
-!pip install streamlit-lottie
-!pip install pandas
-!pip install openpyxl
+%%writefile main.py
 
 import streamlit as st
 import pandas as pd
