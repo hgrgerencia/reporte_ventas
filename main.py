@@ -1,7 +1,6 @@
-# pip install streamlit streamlit-lottie Pillow
+# pip install streamlit streamlit-lottie Pillow openpyxl
 import streamlit as st
 import pandas as pd
-import openpyxl
 
 def pagina_home():
     with st.container():
