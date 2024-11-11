@@ -2,6 +2,12 @@ import streamlit as st
 import pandas as pd
 import openpyxl
 
+st.set_page_config(
+    page_title="Reportes Ribs", 
+    page_icon="./img/ribs.ico",
+    layout="centered" 
+)
+
 def pagina_home():
     with st.container():
         st.subheader("Ribs Burger de Venezuela")
@@ -25,7 +31,7 @@ def pagina_home():
             indices_a_eliminar = df[(df[4] == 'EXT. CEBOLLA') | (df[4] == 'EXT. LECHUGA') | (df[4] == 'EXT. TOMATE')].index
             df = df.drop(indices_a_eliminar)
             # agregando fila de monto total por producto
-            valores_exentos = ['RUTA CORTA','RUTA MEDIA','RUTA LARGA', 'CAJA PARA LLEVAR', 'CAJA PARA LLEVAR COSTILLA']
+            valores_exentos = ['RUTA CORTA','RUTA MEDIA','RUTA LARGA']
             df[10] = df.apply(
                 lambda row: round((row[9] * (1/dolar*1.16)),2) if row[4] not in valores_exentos else round((row[9] * (1/dolar)),2), axis=1
             )
