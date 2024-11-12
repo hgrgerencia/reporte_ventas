@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import openpyxl
+from datetime import datetime
 
 def paginareporte():
     with st.container():
@@ -10,6 +11,10 @@ def paginareporte():
     with st.container():
         # capturar valor del dolar
         st.write("---")
+        # Título de la aplicación
+        st.header("Selecciona una Fecha")
+        # Input de fecha
+        fecha_seleccionada = st.date_input("Elige una fecha", datetime.today())
         st.header("Valor del Dolar para el reporte de venta")
         dolar = st.number_input("Ingrese el valor del dólar:", min_value=0.00, max_value=100.00, value=0.00)
         # capturando el archivo excel a analizar
@@ -44,5 +49,28 @@ def paginareporte():
             suma_total_venta =round(df['TOTAL'].sum(),2)
             st.write(f"Total de cantidades vendidas: {suma_cantidades}")
             st.write(f"Total de la venta: {suma_total_venta}")
+            
             # visualizar tabla
             st.dataframe(df)
+            
+            # Filtrar productos de helados
+            helados_cali = ['BARQUILLA','MALTEADA','COPA DE HELADO','TINITA DE 1 PORCION','TINITA DE 2 PORCIONES']
+            df_helados = df[df['PRODUCTOS'].isin(helados_cali)]
+            st.write("---")
+            st.header("Ventas de helados")
+            st.dataframe(df_helados)
+            
+            # visualizar sumatorias de cantidades y ventas de helados
+            suma_cantidades_helados = round(df_helados['CANTIDADES'].sum(),2)
+            suma_total_venta_helados =round(df_helados['TOTAL'].sum(),2)
+            st.write(f"Total de cantidades clientes: {suma_cantidades_helados}")
+            st.write(f"Total de la venta de helado: {suma_total_venta_helados}")
+            # Número de teléfono (incluyendo código de país, pero sin el +)
+            telefono = "5804148981405"  # Reemplaza con el número de destino
+            mensaje = f"*Fecha reporte Helados: {fecha_seleccionada}*%0ATotal venta: {suma_total_venta_helados}%0ATotal clientes: {suma_cantidades_helados}"
+            # Codifica el mensaje para que sea seguro para URL
+            mensaje_encoded = mensaje.replace(" ", "%20")
+            # Crea la URL de WhatsApp
+            url_whatsapp = f"https://api.whatsapp.com/send?phone={telefono}&text={mensaje_encoded}"
+            # Inserta un enlace en Streamlit
+            st.markdown(f"[Enviar reporte a WhatsApp]({url_whatsapp})")
