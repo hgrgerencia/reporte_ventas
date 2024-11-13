@@ -29,6 +29,10 @@ def paginareporte():
             # limpiando el dataframe de los item de valor cero
             indices_a_eliminar = df[(df[4] == 'EXT. CEBOLLA') | (df[4] == 'EXT. LECHUGA') | (df[4] == 'EXT. TOMATE')].index
             df = df.drop(indices_a_eliminar)
+            
+            # Contar el número de celdas distintas a ""
+            numero_tickets = df[0][df[0] !=""].count()#nunique()
+            
             # agregando fila de monto total por producto
             valores_exentos = ['RUTA CORTA','RUTA MEDIA','RUTA LARGA']
             df[10] = df.apply(
@@ -46,9 +50,12 @@ def paginareporte():
             # with col2:
             # visualizar sumatorias de cantidades y ventas
             suma_cantidades = round(df['CANTIDADES'].sum(),2)
-            suma_total_venta =round(df['TOTAL'].sum(),2)
             st.write(f"Total de cantidades vendidas: {suma_cantidades}")
+            
+            suma_total_venta =round(df['TOTAL'].sum(),2)
             st.write(f"Total de la venta: {suma_total_venta}")
+            
+            st.write(f"Número de ticket del día: {numero_tickets}")
             
             # visualizar tabla
             st.dataframe(df)
