@@ -13,13 +13,15 @@ st.set_page_config(
 
 def menu():
     # Crear el menú lateral
-    st.sidebar.title("Menú")
+    st.sidebar.image("img/ribs.jpg",width=100, use_container_width=True)
+    st.sidebar.divider()
     # Lista de páginas
     indice = {
         "Inicio": paginareporte,
         "Mesoneros": paginamesoneros,
         "Contacto": paginacontacto,
     }
+    st.sidebar.title("Menú")
     menu = st.sidebar.radio("Navega a:", list(indice.keys()))
     indice[menu]()
 
