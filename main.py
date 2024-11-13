@@ -13,7 +13,9 @@ st.set_page_config(
 
 def menu():
     # Crear el menú lateral
-    st.sidebar.image("img/ribs.jpg",width=100, use_container_width=True)
+    USER=st.secrets["USER"]
+    st.sidebar.write(f"Bienvenido {USER}")
+    st.sidebar.image("img/ribs.jpg",width=140, use_container_width=True)
     st.sidebar.divider()
     # Lista de páginas
     indice = {
