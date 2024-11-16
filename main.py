@@ -9,6 +9,15 @@ st.set_page_config(
     page_icon="img/ribs.ico",
     layout="centered" 
 )
+
+hide_st_style = """
+            <style>
+                #MainMenu {visibility: hidden;}
+                footer {visibility: hidden;}
+                header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
     
 
 def menu():
@@ -23,7 +32,7 @@ def menu():
         indice = {
             "Inicio": paginareporte,
             "Mesoneros": paginamesoneros,
-            "Contacto": paginacontacto,
+            "Contacto": paginacontacto
         }
         st.sidebar.title("Menú")
         menu = st.sidebar.radio("Navega a:", list(indice.keys()))
@@ -31,7 +40,6 @@ def menu():
     else:
         st.write("Favor ingresar su nombre de usuario en el Sidebar")
     
-
 menu()
 
 
