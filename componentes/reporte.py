@@ -40,8 +40,11 @@ def paginareporte():
             )
             # agrupando los items o productos x si mmismos y sumando sus cantidades
             df =df.groupby(4).agg({7: 'sum', 10: 'sum'}).reset_index() 
+            df[3] = df.apply(
+                lambda row: round((row[10] / row[7]),2) , axis=1
+            )
             # agregando encabezados a la tabla
-            nuevos_encabezados = ['PRODUCTOS','CANTIDADES', 'TOTAL'] 
+            nuevos_encabezados = ['PRODUCTOS','CANTIDADES', 'TOTAL','PRECIO'] 
             df.columns = nuevos_encabezados
             
             # visualizando los resultados
