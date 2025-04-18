@@ -21,10 +21,10 @@ def paginamesoneros():
 
             # cambiar por nombres de mesoneros
             df.loc[df[6] == 'MESONERO01', 6] = 'LILIANNYS GRACIA'
-            df.loc[df[6] == 'MESONERO02', 6] = 'EDUARDO GARCIA'
-            df.loc[df[6] == 'MESONERO03', 6] = 'ELIAS SANCHEZ'
+            df.loc[df[6] == 'MESONERO02', 6] = 'JOSE GABRIEL'
+            df.loc[df[6] == 'MESONERO03', 6] = 'MARIA CANDURI'
             df.loc[df[6] == 'MESONERO04', 6] = 'ADRIANA ANDRADE'
-            df.loc[df[6] == 'MESONERO05', 6] = 'GURIS GUTIERREZ'
+            df.loc[df[6] == 'MESONERO05', 6] = 'MESONERO 5'
             df.loc[df[6] == '200', 6] = 'CAJA'
             df.loc[df[6] == 200, 6] = 'CAJA'
             df.loc[df[6] == '100', 6] = 'CAJA'
