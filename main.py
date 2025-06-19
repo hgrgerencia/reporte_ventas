@@ -28,17 +28,16 @@ def menu():
     st.sidebar.divider()
     USUARIO = st.sidebar.text_input("Nombre usuario: ")
     # Lista de páginas
-    if USUARIO == USER:
-        indice = {
+
+    indice = {
             "Inicio": paginareporte,
             "Mesoneros": paginamesoneros,
             "Contacto": paginacontacto
         }
-        st.sidebar.title("Menú")
-        menu = st.sidebar.radio("Navega a:", list(indice.keys()))
-        indice[menu]()
-    else:
-        st.write("Favor ingresar su nombre de usuario en el Sidebar")
+    st.sidebar.title("Menú")
+    menu = st.sidebar.radio("Navega a:", list(indice.keys()))
+    indice[menu]()
+
     
 menu()
 
