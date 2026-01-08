@@ -16,7 +16,7 @@ def paginareporte():
         # Input de fecha
         fecha_seleccionada = st.date_input("Elige una fecha", datetime.today())
         st.header("Valor del Dolar para el reporte de venta")
-        dolar = st.number_input("Ingrese el valor del dólar:", min_value=0.00, max_value=300.00, value=0.00)
+        dolar = st.number_input("Ingrese el valor del dólar:", min_value=0.00, max_value=900.00, value=0.00)
         # capturando el archivo excel a analizar
         st.write("---")
         st.header("Cargue su archivo excel")
@@ -84,3 +84,4 @@ def paginareporte():
             url_whatsapp = f"https://api.whatsapp.com/send?phone={telefono}&text={mensaje_encoded}"
             # Inserta un enlace en Streamlit
             st.markdown(f"[Enviar reporte a WhatsApp]({url_whatsapp})")
+
