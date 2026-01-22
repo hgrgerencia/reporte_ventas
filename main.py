@@ -25,7 +25,6 @@ def menu():
     USER=st.secrets["USER"]
     st.sidebar.write(f"Bienvenido... ")
     st.sidebar.image("img/ribs.jpg",width=140)
-    st.sidebar.divider()
     USUARIO = st.sidebar.text_input("Nombre usuario: ")
     # Lista de páginas
 
@@ -40,6 +39,7 @@ def menu():
 
     
 menu()
+
 
 
 
